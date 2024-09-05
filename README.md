@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
@@ -64,3 +65,19 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+=======
+# Properties
+1 - Home Page 
+2 - Blog List 
+3 - Blog Detail 
+4 - Blog Comment
+5 - Author
+6 - Product Sell
+7 - Login 
+8 - Register 
+9 - Verify Account
+10 - Upload Blog User Author
+11 - User Upload Blog Verify
+12 - Team Work
+13 - Review Rating 
+>>>>>>> 419abb2d26cb84f0aebc6f2567149c1e1e735cd9
