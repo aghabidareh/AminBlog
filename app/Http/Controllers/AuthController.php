@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Mail\RegisterMail;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
@@ -47,6 +48,29 @@ class AuthController extends Controller
             return redirect("login")->with("success","your account successfully verified");
         }else{
             abort(404);
+        }
+    }
+
+    public function authLogin(Request $request){
+        $remember = !empty($request) ? true : false;
+
+        if(Auth::attempt(['email' => $request->email , 'password' => $request->password] , $remember)){
+            if(!empty(Auth::user()->email_verified_at)){
+                print('success');
+                die;
+            }else{
+                $userId = Auth::user()->id;
+                Auth::logout();
+
+                $saver = User::getSingle($userId);
+                $saver->remember_token = Str::random(40);
+                $saver->save();
+
+                Mail::to($request->email)->send(new RegisterMail($saver));
+                return redirect()->back()->with("success","you can verify your email address now");
+            }
+        }else{
+            return redirect()->back()->with('error','please enter the correct email and password');
         }
     }
 }

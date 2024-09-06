@@ -2,7 +2,7 @@
     
     <p>Hello{{ $user->name }}</p>
 
-    @component('mail::button' , ['url' => url('verify/'. $user->remember_token)])
+    @component('mail::button' , ['url' => route('verify', $user->remember_token)])
     Verify
     @endcomponent
 
