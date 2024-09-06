@@ -43,7 +43,8 @@
               </div>
               <a href="contact.html" class="nav-item nav-link">Contact</a>
             </div>
-            <a href="" class="btn btn-primary px-4">Join Class</a>
+            <a href="{{ route('login') }}" class="btn btn-primary px-4 mr-2">Login</a>
+            <a href="{{ route('register') }}" class="btn btn-primary px-4">Register</a>
           </div>
         </nav>
       </div>
