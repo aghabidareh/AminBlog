@@ -79,7 +79,6 @@
                       <p class="small mb-0" style="margin-top:20px;"><a href="{{ route('login') }}">I remined my password</a></p>
                     </div>
                   </form>
-
                 </div>
               </div>
 
