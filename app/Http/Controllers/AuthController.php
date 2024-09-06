@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\User;
+use App\Mail\RegisterMail;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
@@ -28,8 +31,22 @@ class AuthController extends Controller
         $saver->name = trim($request->name);
         $saver->email = trim($request->email);
         $saver->password = Hash::make($request->password);
+        $saver->remember_token = Str::random(40);
         $saver->save();
 
-        return redirect("login")->with("success","your account successfully registered");
+        Mail::to($request->email)->send(new RegisterMail($saver));
+
+        return redirect("login")->with("success","verify your email address now");
+    }
+
+    public function verify($token){
+        $user = User::where("remember_token" , '=' , $token)->first();
+        if(!empty($user)){
+            $user->email_verified_at = date('Y-m-d H:i:s');
+            $user->save();
+            return redirect("login")->with("success","your account successfully verified");
+        }else{
+            abort(404);
+        }
     }
 }
