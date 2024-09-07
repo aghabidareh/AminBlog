@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Middleware\AuthMiddleware;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
@@ -21,8 +22,10 @@ Route::post('reset/{token}' , [AuthController::class,'postReset'])->name('post-r
 
 Route::get('verify/{token}' , [AuthController::class,'verify'])->name('verify');
 
-Route::prefix('panel')->group(function () {
-    
-    Route::get('/dashboard', [DashboardController::class,'dashboard'])->name('dashboard');
+Route::get('logout', [AuthController::class,'logout'])->name('logout');
 
+Route::group(['middleware' => 'adminuser'] , function(){
+    Route::prefix('panel')->group(function(){
+        Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+    });
 });

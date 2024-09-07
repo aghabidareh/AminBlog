@@ -57,8 +57,7 @@ class AuthController extends Controller
 
         if(Auth::attempt(['email' => $request->email , 'password' => $request->password] , $remember)){
             if(!empty(Auth::user()->email_verified_at)){
-                print('success');
-                die;
+                return redirect()->route('dashboard');
             }else{
                 $userId = Auth::user()->id;
                 Auth::logout();
@@ -116,5 +115,9 @@ public function postReset($token , Request $request){
     }else{
         abort(404);
 }
+}
+public function logout(){
+    Auth::logout();
+    return redirect()->route('login');
 }
 }
