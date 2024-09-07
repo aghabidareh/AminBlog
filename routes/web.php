@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
@@ -19,3 +20,9 @@ Route::get('reset/{token}' , [AuthController::class,'reset'])->name('reset');
 Route::post('reset/{token}' , [AuthController::class,'postReset'])->name('post-reset');
 
 Route::get('verify/{token}' , [AuthController::class,'verify'])->name('verify');
+
+Route::prefix('panel')->group(function () {
+    
+    Route::get('/dashboard', [DashboardController::class,'dashboard'])->name('dashboard');
+
+});
