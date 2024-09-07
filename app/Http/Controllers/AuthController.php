@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ForgotPasswordMail;
 use App\Models\User;
 use App\Mail\RegisterMail;
 use Illuminate\Support\Str;
@@ -73,4 +74,47 @@ class AuthController extends Controller
             return redirect()->back()->with('error','please enter the correct email and password');
         }
     }
+
+    public function sendForgetPassword(Request $request){
+        $user = User::where('email', $request->email)->first();
+        if(!empty($user)){
+            $user->remember_token = Str::random(40);
+            $user->save();
+
+            Mail::to($user->email)->send(new ForgotPasswordMail($user));
+
+            return redirect()->back()->with("success","check your email and reset your password");
+        }else{
+            return redirect()->back()->with('error','enter a valid email');
+        }
+    }
+
+    public function reset($token){
+        $user = User::where('remember_token', $token)->first();
+        if(!empty($user)){
+            $data['user'] = $user;
+            return view('auth.reset' , compact('data'));
+        }else{
+            abort(404);
+    }
+}
+public function postReset($token , Request $request){
+    $user = User::where('remember_token', $token)->first();
+    if(!empty($user)){
+        if($request->password == $request->cpassword){
+            $user->password = Hash::make($request->password);
+            if(empty($user->email_verified_at)){
+                $user->email_verified_at = date('Y-m-d H:i:s');
+            }
+            $user->remember_token = Str::random(40);
+            $user->save();
+
+            return redirect()->route('login')->with('success','password successfully reset');
+        }else{
+            return redirect()->back()->with('error','confirmation password and new password doesn not match together.');
+        }
+    }else{
+        abort(404);
+}
+}
 }

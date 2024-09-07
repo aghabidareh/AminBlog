@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Forgot Password</title>
+  <title>Reset Password</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -51,7 +51,7 @@
               <div class="d-flex justify-content-center py-4">
                 <a href="index.html" class="logo d-flex align-items-center w-auto">
                   <img src="{{ asset('auth/assets/img/logo.png') }}" alt="">
-                  <span class="d-none d-lg-block">Forgot Password</span>
+                  <span class="d-none d-lg-block">Reset Password</span>
                 </a>
               </div><!-- End Logo -->
 
@@ -60,21 +60,25 @@
                 <div class="card-body">
 
                   <div class="pt-4 pb-2">
-                    <h5 class="card-title text-center pb-0 fs-4">Forgot Password</h5>
-                    <p class="text-center small">Enter your email to change your password</p>
+                    <h5 class="card-title text-center pb-0 fs-4">Reset Password</h5>
                   </div>
 
                   @include('layouts.messages')
 
-                  <form class="row g-3 " action="{{ route('send-forgot-password') }}" method="POST">
+                  <form class="row g-3 " action="{{ route('post-reset') }}" method="POST">
                     @csrf
                     <div class="col-12">
-                      <label for="email" class="form-label">Email</label>
-                      <input type="email" name="email" class="form-control" id="email" required>
+                      <label for="password" class="form-label">New Password</label>
+                      <input type="password" name="password" class="form-control" id="password" required>
                     </div>
 
                     <div class="col-12">
-                      <button class="btn btn-primary w-100" type="submit">Forgot</button>
+                        <label for="password" class="form-label">Confirm New Password</label>
+                        <input type="password" name="cpassword" class="form-control" id="password" required>
+                      </div>
+
+                    <div class="col-12">
+                      <button class="btn btn-primary w-100" type="submit">Reset</button>
                     </div>
                     <div class="col-12">
                       <p class="small mb-0">Don't have account? <a href="{{ route('register') }}">Create an account</a></p>
