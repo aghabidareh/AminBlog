@@ -57,7 +57,7 @@ class AuthController extends Controller
 
         if(Auth::attempt(['email' => $request->email , 'password' => $request->password] , $remember)){
             if(!empty(Auth::user()->email_verified_at)){
-                return redirect()->route('dashboard');
+                return redirect()->route('panel-dashboard');
             }else{
                 $userId = Auth::user()->id;
                 Auth::logout();
