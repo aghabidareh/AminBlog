@@ -11,7 +11,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="{{-- route('panel-user-list') --}}">
+        <a class="nav-link" href="{{ route('panel-user-list') }}">
           <i class="bi bi-person"></i>
           <span>Users</span>
         </a>
@@ -33,7 +33,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{-- route('panel-blog-list') --}}">
+        <a class="nav-link collapsed" href="{{-- route('panel-help-list') --}}">
           <i class="bi bi-question-circle"></i>
           <span>Help</span>
         </a>
