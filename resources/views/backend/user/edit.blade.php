@@ -20,14 +20,17 @@
                   <label for="inputNanme4" class="form-label">Name</label>
                   <input type="text" name="name" class="form-control" id="inputNanme4" value="{{ $user->name }}">
                 </div>
+                <div class="text-danger">{{ $errors->first('name') }}</div>
                 <div class="col-12">
                   <label for="inputEmail4" class="form-label">Email</label>
                   <input type="email" name="email" class="form-control" id="inputEmail4" value="{{ $user->email }}">
                 </div>
+                <div class="text-danger">{{ $errors->first('email') }}</div>
                 <div class="col-12">
                   <label for="inputPassword4" class="form-label">Password</label>
                   <input type="text" name="password" class="form-control" id="inputPassword4" placeholder="change the password if you want:">
                 </div>
+                <div class="text-danger">{{ $errors->first('password') }}</div>
   
                 <div class="col-12">
                   <label for="inputPassword4" class="form-label">Status</label>

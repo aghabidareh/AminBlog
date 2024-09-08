@@ -19,6 +19,13 @@ class UserController extends Controller
     }
 
     public function storeUser(Request $request){
+        request()->validate([
+            "name"=> "required",
+            "email"=> "required|unique:users|email",
+            "password"=>"required",
+        ]);
+
+
         $saver = new User;
         $saver->name = trim($request->name);
         $saver->email = trim($request->email);
@@ -34,6 +41,11 @@ class UserController extends Controller
         return view("backend.user.edit", compact("user"));
     }
     public function updateUser($id , Request $request){
+        request()->validate([
+            "name"=> "required",
+            "email"=> "required|emailunique:users,email" . $id,
+        ]);
+
         $user = User::getSingle($id);
         $user->name = trim($request->name);
         $user->email = trim($request->email);

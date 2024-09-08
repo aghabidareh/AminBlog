@@ -50,6 +50,6 @@ class User extends Authenticatable
     }
 
     public static function getRecordUsers(){
-        return self::select('users.*')->where('is_admin' , '=' , 0)->where('is_delete','=',0)->orderBy('users.id' , 'desc')->paginate(20);
+        return self::select('users.*')->where('is_admin' , '=' , 0)->orderBy('users.id' , 'desc')->paginate(20);
     }
 }
