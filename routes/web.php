@@ -34,6 +34,14 @@ Route::group(['middleware' => 'adminuser'] , function(){
 
             Route::get('list' , [UserController::class,'user'])->name('panel-user-list');
 
+            Route::get('store' , [UserController::class,'addUser'])->name('add-user'); // showing the view of add user
+            Route::post('store' , [UserController::class,'storeUser'])->name('store-user'); // send the request and set all into database
+
+            Route::get('edit/{id}' , [UserController::class,'editUser'])->name('edit-user');
+            Route::post('update/{id}' , [UserController::class,'updateUser'])->name('update-user');
+
+            Route::get('delete/{id}', [UserController::class,'deleteUser'])->name('delete-user');
+
         });
     
     });
