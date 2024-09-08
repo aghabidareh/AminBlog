@@ -41,7 +41,7 @@
               </tbody>
             </table>
 
-            {!! $records->appends(Illuminate/Support/Facades/Request::except('page'))->links() !!}
+            {!! $records->appends(Request::except('page'))->links() !!}
 
           </div>
         </div>
