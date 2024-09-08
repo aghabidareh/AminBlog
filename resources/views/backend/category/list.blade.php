@@ -43,8 +43,8 @@
                     <td>{{ empty($record->status) ? "Active" : "InActive" }}</td>
                     <td>{{ $record->created_at }}</td>
                     <td>
-                        <a href="{{ route('edit-user' , $record->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                        <a onclick="return confirm('are your to delete this user?')" href="{{ route('delete-user' , $record->id) }}" class="btn btn-danger btn-sm">Delete</a></td>
+                        <a href="{{ route('edit-category' , $record->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                        <a onclick="return confirm('are your to delete this user?')" href="{{ route('delete-category' , $record->id) }}" class="btn btn-danger btn-sm">Delete</a></td>
                   </tr>
                 @endforeach
               </tbody>
