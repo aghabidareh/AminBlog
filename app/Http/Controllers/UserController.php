@@ -37,7 +37,7 @@ class UserController extends Controller
     }
 
     public function editUser($id){
-        $user = User::getSingle($id);
+        $user = User::find($id);
         return view("backend.user.edit", compact("user"));
     }
     public function updateUser($id , Request $request){
@@ -46,7 +46,7 @@ class UserController extends Controller
             "email"=> "required|emailunique:users,email" . $id,
         ]);
 
-        $user = User::getSingle($id);
+        $user = User::find($id);
         $user->name = trim($request->name);
         $user->email = trim($request->email);
         $user->status = trim($request->status);
@@ -59,7 +59,7 @@ class UserController extends Controller
     }
 
     public function deleteUser($id){
-        $user = User::getSingle($id);
+        $user = User::find($id);
         $user->delete();
 
         return redirect()->route('panel-user-list')->with("success","user successfully deleted");

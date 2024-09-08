@@ -44,11 +44,6 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-
-    public static function getSingle($id){
-        return self::where('id', $id)->first();
-    }
-
     public static function getRecordUsers(){
         return self::select('users.*')->where('is_admin' , '=' , 0)->orderBy('users.id' , 'desc')->paginate(20);
     }

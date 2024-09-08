@@ -4,6 +4,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Middleware\AuthMiddleware;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategpryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 
@@ -42,6 +43,18 @@ Route::group(['middleware' => 'adminuser'] , function(){
 
             Route::get('delete/{id}', [UserController::class,'deleteUser'])->name('delete-user');
 
+        });
+
+        Route::prefix('category')->group(function(){
+            Route::get('list' , [CategpryController::class,'category'])->name('panel-category-list');
+
+            Route::get('store' , [CategpryController::class,'addCategory'])->name('add-category'); // showing the view of add category
+            Route::post('store' , [CategpryController::class,'storeCategory'])->name('store-category'); // send the request and set all into database
+
+            Route::get('edit/{id}' , [CategpryController::class,'editCategory'])->name('edit-category');
+            Route::post('update/{id}' , [CategpryController::class,'updateCategory'])->name('update-category');
+
+            Route::get('delete/{id}', [CategpryController::class,'deleteCategory'])->name('delete-category');
         });
     
     });

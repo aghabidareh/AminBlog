@@ -18,7 +18,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link @if(Request::segment(2) != 'category' ) collapsed @endif" href="{{-- route('panel-category-list') --}}">
+        <a class="nav-link @if(Request::segment(2) != 'category' ) collapsed @endif" href="{{ route('panel-category-list') }}">
           <i class="bi bi-person"></i>
           <span>Category</span>
         </a>
