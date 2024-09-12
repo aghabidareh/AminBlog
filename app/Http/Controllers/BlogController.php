@@ -63,7 +63,6 @@ class BlogController extends Controller
         $saver->save();
 
         if(!empty($request->file('image'))){
-            unlink(storage_path('blog') . $saver->image);
             $ext = $request->file('image')->getClientOriginalExtension();
             $file = $request->file('image');
             $fileName = date('ymdhis') . '.'. $ext;
