@@ -47,11 +47,34 @@ class BlogController extends Controller
         return redirect()->route('panel-blog-list')->with('success','blog successfully created');
     }
     public function editBlog($id){
+        $records = Category::getCategories();
         $blog = Blog::find($id);
-        return view('backend.blog.edit', compact('blog'));
+        return view('backend.blog.edit', compact(['blog','records']));
     }
     public function updateBlog($id , Request $request){
-        die;
+        $saver = Blog::find( $id );
+        $saver->title = trim($request->title);
+        $saver->meta_keywords = trim($request->meta_keywords);
+        $saver->meta_description = trim($request->meta_description);
+        $saver->description = trim($request->description);
+        $saver->category_id = $request->category_id;
+        $saver->is_publish = $request->is_publish;
+        $saver->status = $request->status;
+        $saver->save();
+
+        if(!empty($request->file('image'))){
+            unlink(storage_path('blog') . $saver->image);
+            $ext = $request->file('image')->getClientOriginalExtension();
+            $file = $request->file('image');
+            $fileName = date('ymdhis') . '.'. $ext;
+            $file->move(storage_path('blog'), $fileName);
+
+            $saver->image = storage_path('blog') . $fileName;
+        }
+
+        $saver->save();
+
+        return redirect()->route('panel-blog-list')->with('success','blog successfully updated');
     }
     public function deleteBlog($id){
         $blog = Blog::find($id);

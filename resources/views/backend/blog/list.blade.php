@@ -24,6 +24,7 @@
                   <th scope="col">Meta Description</th>
                   <th scope="col">Meta Keywords</th>
                   <th scope="col">Status</th>
+                  <th scope="col">Publish</th>
                   <th scope="col">Created At</th>
                   <th scop="col">Action</th>
                 </tr>
@@ -32,11 +33,13 @@
                 @foreach ($records as $record)
                 <tr>
                     <th scope="row">{{ $record->id }}</th>
+                    </td>
                     <td>{{ $record->title }}</td>
                     <td>{{ $record->slug }}</td>
                     <td>{{ $record->meta_description }}</td>
                     <td>{{ $record->meta_keywords }}</td>
-                    <td>{{ empty($record->status) ? "Active" : "InActive" }}</td>
+                    <td>{{ empty($record->status) ? "InActive" : "Active" }}</td>
+                    <td>{{ empty($record->is_publish) ? "No" : "Yes" }}</td>
                     <td>{{ $record->created_at }}</td>
                     <td>
                         <a href="{{ route('edit-blog' , $record->id) }}" class="btn btn-warning btn-sm">Edit</a>
