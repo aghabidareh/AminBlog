@@ -9,19 +9,31 @@ use App\Http\Controllers\CategpryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 
-Route::get('/' , [HomeController::class,'home'])->name('home');
+Route::namespace("homePage")->group(function () {
+    Route::get('/' , [HomeController::class,'home'])->name('home');
 
-Route::get('login', [AuthController::class,'login'])->name('login');
-Route::post('login', [AuthController::class,'authLogin'])->name('authLogin');
-
-Route::get('register', [AuthController::class,'register'])->name('register');
-Route::post('register', [AuthController::class,'createUser'])->name('userCreation');
-
-Route::get('forgot-password', [AuthController::class,'forgetPassword'])->name('forgot-password');
-Route::post('forgot-password', [AuthController::class,'sendForgetPassword'])->name('send-forgot-password');
-
-Route::get('reset/{token}' , [AuthController::class,'reset'])->name('reset');
-Route::post('reset/{token}' , [AuthController::class,'postReset'])->name('post-reset');
+    Route::prefix('/')->group(function(){
+        Route::namespace('registration')->group(function(){
+            Route::get('login', [AuthController::class,'login'])->name('login');
+            Route::post('login', [AuthController::class,'authLogin'])->name('authLogin');
+        
+            Route::get('register', [AuthController::class,'register'])->name('register');
+            Route::post('register', [AuthController::class,'createUser'])->name('userCreation');
+        
+            Route::get('forgot-password', [AuthController::class,'forgetPassword'])->name('forgot-password');
+            Route::post('forgot-password', [AuthController::class,'sendForgetPassword'])->name('send-forgot-password');
+        
+            Route::get('reset/{token}' , [AuthController::class,'reset'])->name('reset');
+            Route::post('reset/{token}' , [AuthController::class,'postReset'])->name('post-reset');});
+        });
+        Route::namespace('mainContents')->group(function(){
+            Route::get('about', [HomeController::class,'about'])->name('about');
+            Route::get('blog', [HomeController::class,'blog'])->name('blog');
+            Route::get('contact', [HomeController::class,'contact'])->name('contact');
+            Route::get('team', [HomeController::class,'team'])->name('team');
+            Route::get('gallery', [HomeController::class, 'gallery'])->name('gallery');
+        });
+});
 
 Route::get('verify/{token}' , [AuthController::class,'verify'])->name('verify');
 
