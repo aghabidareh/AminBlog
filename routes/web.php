@@ -28,10 +28,13 @@ Route::namespace("homePage")->group(function () {
         });
         Route::namespace('mainContents')->group(function(){
             Route::get('about', [HomeController::class,'about'])->name('about');
-            Route::get('blog', [HomeController::class,'blog'])->name('blog');
             Route::get('contact', [HomeController::class,'contact'])->name('contact');
             Route::get('team', [HomeController::class,'team'])->name('team');
             Route::get('gallery', [HomeController::class, 'gallery'])->name('gallery');
+            Route::prefix('blog')->group(function(){
+                Route::get('/', [HomeController::class,'blog'])->name('blog');
+                Route::get('/{slug}', [HomeController::class,'show'])->name('blog-show');
+            });
         });
 });
 

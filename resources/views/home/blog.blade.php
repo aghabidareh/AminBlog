@@ -28,190 +28,37 @@
             <h1 class="mb-4">Latest Articles From Blog</h1>
           </div>
           <div class="row pb-3">
+
+            @foreach ($blogs as $blog)
+            {{ dd($blog->categories_name) }}
             <div class="col-lg-4 mb-4">
               <div class="card border-0 shadow-sm mb-2">
-                <img class="card-img-top mb-2" src="{{ asset('home/img/blog-1.jpg') }}" alt="" />
+                <img class="card-img-top mb-2" src="{{ $blog->getImage() }}" alt="" />
                 <div class="card-body bg-light text-center p-4">
-                  <h4 class="">Diam amet eos at no eos</h4>
+                  <h4 class="">{{ $blog->title }}</h4>
                   <div class="d-flex justify-content-center mb-3">
                     <small class="mr-3"
-                      ><i class="fa fa-user text-primary"></i> Admin</small
+                      ><i class="fa fa-user text-primary"></i>{{ $blog->user_name }}</small
                     >
                     <small class="mr-3"
-                      ><i class="fa fa-folder text-primary"></i> Web Design</small
+                      ><i class="fa fa-folder text-primary"></i> {{ $blog->categories_name }}</small
                     >
                     <small class="mr-3"
-                      ><i class="fa fa-comments text-primary"></i> 15</small
+                      ><i class="fa fa-comments text-primary"></i> 0</small
                     >
                   </div>
                   <p>
-                    Sed kasd sea sed at elitr sed ipsum justo, sit nonumy diam
-                    eirmod, duo et sed sit eirmod kasd clita tempor dolor stet
-                    lorem. Tempor ipsum justo amet stet...
+                    {!! script_tags(Str::substr($blog->description , 0 , 50)) !!}...
                   </p>
-                  <a href="" class="btn btn-primary px-4 mx-auto my-2"
+                  <a href="{{ route('blog-show' , $blog->slug) }}" class="btn btn-primary px-4 mx-auto my-2"
                     >Read More</a
                   >
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 mb-4">
-              <div class="card border-0 shadow-sm mb-2">
-                <img class="card-img-top mb-2" src="{{ asset('home/img/blog-2.jpg') }}" alt="" />
-                <div class="card-body bg-light text-center p-4">
-                  <h4 class="">Diam amet eos at no eos</h4>
-                  <div class="d-flex justify-content-center mb-3">
-                    <small class="mr-3"
-                      ><i class="fa fa-user text-primary"></i> Admin</small
-                    >
-                    <small class="mr-3"
-                      ><i class="fa fa-folder text-primary"></i> Web Design</small
-                    >
-                    <small class="mr-3"
-                      ><i class="fa fa-comments text-primary"></i> 15</small
-                    >
-                  </div>
-                  <p>
-                    Sed kasd sea sed at elitr sed ipsum justo, sit nonumy diam
-                    eirmod, duo et sed sit eirmod kasd clita tempor dolor stet
-                    lorem. Tempor ipsum justo amet stet...
-                  </p>
-                  <a href="" class="btn btn-primary px-4 mx-auto my-2"
-                    >Read More</a
-                  >
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 mb-4">
-              <div class="card border-0 shadow-sm mb-2">
-                <img class="card-img-top mb-2" src="{{ asset('home/img/blog-3.jpg') }}" alt="" />
-                <div class="card-body bg-light text-center p-4">
-                  <h4 class="">Diam amet eos at no eos</h4>
-                  <div class="d-flex justify-content-center mb-3">
-                    <small class="mr-3"
-                      ><i class="fa fa-user text-primary"></i> Admin</small
-                    >
-                    <small class="mr-3"
-                      ><i class="fa fa-folder text-primary"></i> Web Design</small
-                    >
-                    <small class="mr-3"
-                      ><i class="fa fa-comments text-primary"></i> 15</small
-                    >
-                  </div>
-                  <p>
-                    Sed kasd sea sed at elitr sed ipsum justo, sit nonumy diam
-                    eirmod, duo et sed sit eirmod kasd clita tempor dolor stet
-                    lorem. Tempor ipsum justo amet stet...
-                  </p>
-                  <a href="" class="btn btn-primary px-4 mx-auto my-2"
-                    >Read More</a
-                  >
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 mb-4">
-              <div class="card border-0 shadow-sm mb-2">
-                <img class="card-img-top mb-2" src="{{ asset('home/img/blog-1.jpg') }}" alt="" />
-                <div class="card-body bg-light text-center p-4">
-                  <h4 class="">Diam amet eos at no eos</h4>
-                  <div class="d-flex justify-content-center mb-3">
-                    <small class="mr-3"
-                      ><i class="fa fa-user text-primary"></i> Admin</small
-                    >
-                    <small class="mr-3"
-                      ><i class="fa fa-folder text-primary"></i> Web Design</small
-                    >
-                    <small class="mr-3"
-                      ><i class="fa fa-comments text-primary"></i> 15</small
-                    >
-                  </div>
-                  <p>
-                    Sed kasd sea sed at elitr sed ipsum justo, sit nonumy diam
-                    eirmod, duo et sed sit eirmod kasd clita tempor dolor stet
-                    lorem. Tempor ipsum justo amet stet...
-                  </p>
-                  <a href="" class="btn btn-primary px-4 mx-auto my-2"
-                    >Read More</a
-                  >
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 mb-4">
-              <div class="card border-0 shadow-sm mb-2">
-                <img class="card-img-top mb-2" src="{{ asset('home/img/blog-2.jpg') }}" alt="" />
-                <div class="card-body bg-light text-center p-4">
-                  <h4 class="">Diam amet eos at no eos</h4>
-                  <div class="d-flex justify-content-center mb-3">
-                    <small class="mr-3"
-                      ><i class="fa fa-user text-primary"></i> Admin</small
-                    >
-                    <small class="mr-3"
-                      ><i class="fa fa-folder text-primary"></i> Web Design</small
-                    >
-                    <small class="mr-3"
-                      ><i class="fa fa-comments text-primary"></i> 15</small
-                    >
-                  </div>
-                  <p>
-                    Sed kasd sea sed at elitr sed ipsum justo, sit nonumy diam
-                    eirmod, duo et sed sit eirmod kasd clita tempor dolor stet
-                    lorem. Tempor ipsum justo amet stet...
-                  </p>
-                  <a href="" class="btn btn-primary px-4 mx-auto my-2"
-                    >Read More</a
-                  >
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 mb-4">
-              <div class="card border-0 shadow-sm mb-2">
-                <img class="card-img-top mb-2" src="{{ asset('home/img/blog-3.jpg') }}" alt="" />
-                <div class="card-body bg-light text-center p-4">
-                  <h4 class="">Diam amet eos at no eos</h4>
-                  <div class="d-flex justify-content-center mb-3">
-                    <small class="mr-3"
-                      ><i class="fa fa-user text-primary"></i> Admin</small
-                    >
-                    <small class="mr-3"
-                      ><i class="fa fa-folder text-primary"></i> Web Design</small
-                    >
-                    <small class="mr-3"
-                      ><i class="fa fa-comments text-primary"></i> 15</small
-                    >
-                  </div>
-                  <p>
-                    Sed kasd sea sed at elitr sed ipsum justo, sit nonumy diam
-                    eirmod, duo et sed sit eirmod kasd clita tempor dolor stet
-                    lorem. Tempor ipsum justo amet stet...
-                  </p>
-                  <a href="" class="btn btn-primary px-4 mx-auto my-2"
-                    >Read More</a
-                  >
-                </div>
-              </div>
-            </div>
+            @endforeach
             <div class="col-md-12 mb-4">
-              <nav aria-label="Page navigation">
-                <ul class="pagination justify-content-center mb-0">
-                  <li class="page-item disabled">
-                    <a class="page-link" href="#" aria-label="Previous">
-                      <span aria-hidden="true">&laquo;</span>
-                      <span class="sr-only">Previous</span>
-                    </a>
-                  </li>
-                  <li class="page-item active">
-                    <a class="page-link" href="#">1</a>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                      <span aria-hidden="true">&raquo;</span>
-                      <span class="sr-only">Next</span>
-                    </a>
-                  </li>
-                </ul>
-              </nav>
+              {!! $blog->appends(Request::except('page'))->links() !!}
             </div>
           </div>
         </div>

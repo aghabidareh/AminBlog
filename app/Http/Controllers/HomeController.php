@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -22,6 +23,8 @@ class HomeController extends Controller
         return view('home.gallery');
     }
     public function blog(){
-        return view('home.blog');
+        $blogs = Blog::where('is_publish',1)->where('status',1)->orderby('id','desc')->paginate(10);
+
+        return view('home.blog' , compact('blogs'));
     }
 }
