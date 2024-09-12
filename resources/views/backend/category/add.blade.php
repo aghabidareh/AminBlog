@@ -51,22 +51,6 @@
 
               <hr>
 
-              <div class="col-12">
-                <label class="form-label">Slug</label>
-                <input type="text" name="slug" value="{{ $categoty->slug }}" required class="form-control">
-              </div>
-              <div class="text-danger">{{ $errors->first('slug') }}</div>
-
-              <hr>
-
-              <div class="col-12">
-                <label class="form-label">Meta Slug</label>
-                <input type="text" name="meta_slug" value="{{ $categoty->meta_slug }}" required class="form-control">
-              </div>
-              <div class="text-danger">{{ $errors->first('meta_slug') }}</div>
-
-              <hr>
-
 
               <div class="col-12">
                 <label for="inputPassword4" class="form-label">Status</label>

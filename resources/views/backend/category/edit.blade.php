@@ -13,7 +13,7 @@
 
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Add Category</h5>
+            <h5 class="card-title">Edit Category</h5>
 
             <form class="row g-3" action="{{ route('update-category') }}" method="POST">
                 @csrf
@@ -51,28 +51,12 @@
 
               <hr>
 
-              <div class="col-12">
-                <label class="form-label">Slug</label>
-                <input type="text" name="slug" value="{{ $categoty->slug }}" required class="form-control">
-              </div>
-              <div class="text-danger">{{ $errors->first('slug') }}</div>
-
-              <hr>
-
-              <div class="col-12">
-                <label class="form-label">Meta Slug</label>
-                <input type="text" name="meta_slug" value="{{ $categoty->meta_slug }}" required class="form-control">
-              </div>
-              <div class="text-danger">{{ $errors->first('meta_slug') }}</div>
-
-              <hr>
-
 
               <div class="col-12">
                 <label for="inputPassword4" class="form-label">Status</label>
                 <select name="status" id="" class="form-control">
-                    <option value="1">Active</option>
-                    <option value="0">InActive</option>
+                    <option {{ ($category->status == 1) ? "selected" : '' }} value="1">Active</option>
+                    <option {{ ($category->status == 0) ? "selected" : '' }} value="0">InActive</option>
                 </select>
               </div>
 

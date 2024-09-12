@@ -4,6 +4,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Middleware\AuthMiddleware;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategpryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
@@ -55,6 +56,18 @@ Route::group(['middleware' => 'adminuser'] , function(){
             Route::post('update/{id}' , [CategpryController::class,'updateCategory'])->name('update-category');
 
             Route::get('delete/{id}', [CategpryController::class,'deleteCategory'])->name('delete-category');
+        });
+
+        Route::prefix('blog')->group(function(){
+            Route::get('list' , [BlogController::class,'blog'])->name('panel-blog-list');
+
+            Route::get('store' , [BlogController::class,'addBlog'])->name('add-blog'); // showing the view of add blog
+            Route::post('store' , [BlogController::class,'storeBlog'])->name('store-blog'); // send the request and set all into database
+
+            Route::get('edit/{id}' , [BlogController::class,'editBlog'])->name('edit-blog');
+            Route::post('update/{id}' , [BlogController::class,'updateBlog'])->name('update-blog');
+
+            Route::get('delete/{id}', [BlogController::class,'deleteBlog'])->name('delete-blog');
         });
     
     });

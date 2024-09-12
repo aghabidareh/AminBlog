@@ -24,8 +24,6 @@ class CategpryController extends Controller
         $category->meta_title = $request->meta_title;
         $category->meta_keywords = $request->meta_keywords;
         $category->meta_description = $request->meta_description;
-        $category->slug = Str::slug($request->slug);
-        $category->meta_slug = Str::slug($request->meta_slug);
         $category->status = $request->status;
         $category->save();
 
@@ -42,8 +40,6 @@ class CategpryController extends Controller
         $category->meta_title = $request->meta_title;
         $category->meta_keywords = $request->meta_keywords;
         $category->meta_description = $request->meta_description;
-        $category->slug = Str::slug($request->slug);
-        $category->meta_slug = Str::slug($request->meta_slug);
         $category->status = $request->status;
         $category->save();
 
