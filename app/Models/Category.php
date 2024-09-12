@@ -12,4 +12,8 @@ class Category extends Model
     public static function getRecords(){
         return self::select("categories.*")->orderBy("id","desc")->paginate(30);
     }
+
+    public static function getCategories(){
+        return self::select("categories.*")->where('status' , '=' , 1)->get();
+    }
 }
