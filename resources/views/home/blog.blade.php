@@ -30,7 +30,6 @@
           <div class="row pb-3">
 
             @foreach ($blogs as $blog)
-            {{ dd($blog->categories_name) }}
             <div class="col-lg-4 mb-4">
               <div class="card border-0 shadow-sm mb-2">
                 <img class="card-img-top mb-2" src="{{ $blog->getImage() }}" alt="" />
@@ -48,9 +47,9 @@
                     >
                   </div>
                   <p>
-                    {!! script_tags(Str::substr($blog->description , 0 , 50)) !!}...
+                    {!! strip_tags(Str::substr($blog->description , 0 , 50)) !!}...
                   </p>
-                  <a href="{{ route('blog-show' , $blog->slug) }}" class="btn btn-primary px-4 mx-auto my-2"
+                  <a href="" class="btn btn-primary px-4 mx-auto my-2"
                     >Read More</a
                   >
                 </div>
@@ -58,7 +57,7 @@
             </div>
             @endforeach
             <div class="col-md-12 mb-4">
-              {!! $blog->appends(Request::except('page'))->links() !!}
+              {!! $blogs->appends(Request::except('page'))->links() !!}
             </div>
           </div>
         </div>

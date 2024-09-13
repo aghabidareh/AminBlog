@@ -16,7 +16,9 @@ class Blog extends Model
     }
 
     public function getImage(){
-        if(!empty($this->image) && file_exists(storage_path('blog\\'. $this->image))){
-            return storage_path('blog\\'. $this->image);
-    }
+        if(!empty($this->image)){
+            return url('upload/'.$this->image);
+        }else{
+            return;
+        }
 }}

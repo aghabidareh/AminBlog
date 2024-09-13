@@ -37,9 +37,9 @@ class BlogController extends Controller
             $ext = $request->file('image')->getClientOriginalExtension();
             $file = $request->file('image');
             $fileName = date('ymdhis') . '.'. $ext;
-            $file->move(storage_path('blog\\'), $fileName);
+            $file->move('upload/',$fileName);
 
-            $saver->image = storage_path('blog\\') . $fileName;
+            $saver->image = $fileName;
         }
 
         $saver->save();
@@ -66,9 +66,9 @@ class BlogController extends Controller
             $ext = $request->file('image')->getClientOriginalExtension();
             $file = $request->file('image');
             $fileName = date('ymdhis') . '.'. $ext;
-            $file->move(storage_path('blog'), $fileName);
+            $file->move('upload/',$fileName);
 
-            $saver->image = storage_path('blog') . $fileName;
+            $saver->image = $fileName;
         }
 
         $saver->save();

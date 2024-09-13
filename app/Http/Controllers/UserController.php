@@ -41,10 +41,6 @@ class UserController extends Controller
         return view("backend.user.edit", compact("user"));
     }
     public function updateUser($id , Request $request){
-        request()->validate([
-            "name"=> "required",
-            "email"=> "required|emailunique:users,email" . $id,
-        ]);
 
         $user = User::find($id);
         $user->name = trim($request->name);
