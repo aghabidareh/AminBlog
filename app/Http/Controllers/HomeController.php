@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -26,5 +27,17 @@ class HomeController extends Controller
         $blogs = Blog::getRecordsFront();
 
         return view('home.blog' , compact('blogs'));
+    }
+
+    public function show($slug){
+        $categories = Category::getCategories();
+        $blog = Blog::getRecordsSlug($slug);
+        $recents = Blog::getRecentPosts();
+        $relatedPosts = Blog::getRelatedPosts($blog->category_id , $blog->id);
+        if(!empty($blog)){
+            return view('home.blogShow', compact(['blog','categories','recents','relatedPosts']));
+        }else{
+            abort(404);
+        }
     }
 }

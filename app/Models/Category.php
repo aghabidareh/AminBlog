@@ -16,4 +16,8 @@ class Category extends Model
     public static function getCategories(){
         return self::select("categories.*")->where('status' , '=' , 1)->get();
     }
+
+    public function totalBlogs(){
+        return $this->hasMany(Blog::class,'category_id')->where('status','=',1)->where('is_publish','=', 1)->count();
+    }
 }

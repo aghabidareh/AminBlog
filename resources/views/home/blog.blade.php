@@ -10,7 +10,7 @@
         >
           <h3 class="display-3 font-weight-bold text-white">Our Blog</h3>
           <div class="d-inline-flex text-white">
-            <p class="m-0"><a class="text-white" href="">Home</a></p>
+            <p class="m-0"><a class="text-white" href="{{ route('home') }}">Home</a></p>
             <p class="m-0 px-2">/</p>
             <p class="m-0">Our Blog</p>
           </div>
@@ -49,7 +49,7 @@
                   <p>
                     {!! strip_tags(Str::substr($blog->description , 0 , 50)) !!}...
                   </p>
-                  <a href="" class="btn btn-primary px-4 mx-auto my-2"
+                  <a href="{{ route('blog-show' , $blog->slug) }}" class="btn btn-primary px-4 mx-auto my-2"
                     >Read More</a
                   >
                 </div>
