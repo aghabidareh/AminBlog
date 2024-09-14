@@ -24,12 +24,12 @@
             id="navbarCollapse"
           >
             <div class="navbar-nav font-weight-bold mx-auto py-0">
-              <a href="{{ route('home') }}" class="nav-item nav-link active">Home</a>
-              <a href="{{ route('about') }}" class="nav-item nav-link">About</a>
-              <a href="{{ route('team') }}" class="nav-item nav-link">Team</a>
-              <a href="{{ route('gallery') }}" class="nav-item nav-link">Gallery</a>
-              <a href="{{ route('contact') }}" class="nav-item nav-link">Contact</a>
-              <a href="{{ route('blog') }}" class="nav-item nav-link">Blog</a>
+              <a href="{{ route('home') }}" class="nav-item nav-link @if(Request::segment(1) == '') active @endif">Home</a>
+              <a href="{{ route('about') }}" class="nav-item nav-link @if(Request::segment(1) == 'about') active @endif">About</a>
+              <a href="{{ route('team') }}" class="nav-item nav-link @if(Request::segment(1) == 'team') active @endif">Team</a>
+              <a href="{{ route('gallery') }}" class="nav-item nav-link  @if(Request::segment(1) == 'gallery') active @endif">Gallery</a>
+              <a href="{{ route('contact') }}" class="nav-item nav-link @if(Request::segment(1) == 'contact') active @endif">Contact</a>
+              <a href="{{ route('blog') }}" class="nav-item nav-link @if(Request::segment(1) == 'blog') active @endif">Blog</a>
             </div>
             <a href="{{ route('login') }}" class="btn btn-primary px-4 mr-2">Login</a>
             <a href="{{ route('register') }}" class="btn btn-primary px-4">Register</a>
