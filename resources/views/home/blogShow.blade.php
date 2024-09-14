@@ -157,11 +157,17 @@
           <div class="col-lg-4 mt-5 mt-lg-0">
             <!-- Search Form -->
             <div class="mb-5">
-              <form action="{{ route('blog') }}" method="GET">
+              <form action="">
                 <div class="input-group">
-                  <input required name="search" type="text" class="form-control form-control-lg" placeholder="Keyword"/>
+                  <input
+                    type="text"
+                    class="form-control form-control-lg"
+                    placeholder="Keyword"
+                  />
                   <div class="input-group-append">
-                    <button class="input-group-text bg-transparent text-primary"><i class="fa fa-search"></i></button>
+                    <span class="input-group-text bg-transparent text-primary"
+                      ><i class="fa fa-search"></i
+                    ></span>
                   </div>
                 </div>
               </form>
