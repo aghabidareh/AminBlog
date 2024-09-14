@@ -172,20 +172,6 @@
                 </div>
               </form>
             </div>
-  
-            <!-- Category List -->
-            <div class="mb-5">
-              <h2 class="mb-4">Categories</h2>
-              <ul class="list-group list-group-flush">
-                @foreach ($categories as $category)
-                    <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                    <a href="">{{ $category->name }}</a>
-                    <span class="badge badge-primary badge-pill">{{ $category->totalBlogs() }}</span>
-                  </li>
-                @endforeach
-
-              </ul>
-            </div>
             <!-- Recent Post -->
             <div class="mb-5">
               <h2 class="mb-4">Recent Post</h2>
