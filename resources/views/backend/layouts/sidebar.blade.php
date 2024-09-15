@@ -1,4 +1,5 @@
-  <!-- ======= Sidebar ======= -->
+
+<!-- ======= Sidebar ======= -->
   <aside id="sidebar" class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
@@ -10,12 +11,12 @@
         </a>
       </li>
 
-      <li class="nav-item">
-        <a class="nav-link @if(Request::segment(2) != 'user' ) collapsed @endif" href="{{ route('panel-user-list') }}">
-          <i class="bi bi-person"></i>
-          <span>Users</span>
-        </a>
-      </li>
+       <li class="nav-item">
+         <a class="nav-link @if(Request::segment(2) != 'user' ) collapsed @endif" href="{{ route('panel-user-list') }}">
+           <i class="bi bi-person"></i>
+           <span>Users</span>
+         </a>
+      </li>  
 
       <li class="nav-item">
         <a class="nav-link @if(Request::segment(2) != 'category' ) collapsed @endif" href="{{ route('panel-category-list') }}">

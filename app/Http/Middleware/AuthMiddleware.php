@@ -17,11 +17,16 @@ class AuthMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         if(Auth::check()){
-            return $next($request);
+            if(Auth::user()->is_admin == 1){
+                return $next($request);
+            }else{
+                Auth::logout();
+                return redirect()->route("home");
+            }
         }
         else{
             Auth::logout();
-            return redirect()->route('login');
+            return redirect()->route('home');
         }
     }
 }
