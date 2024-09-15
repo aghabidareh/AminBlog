@@ -34,6 +34,8 @@ Route::namespace("homePage")->group(function () {
             Route::prefix('blog')->group(function(){
                 Route::get('/', [HomeController::class,'blog'])->name('blog');
                 Route::get('/{slug}', [HomeController::class,'show'])->name('blog-show');
+                Route::post('storeComment' , [HomeController::class,'storeComment'])->name('storeComment');
+                Route::get('storeReplayComment' , [HomeController::class,'storeReplayComment'])->name('storeReplayComment');
             });
         });
 });

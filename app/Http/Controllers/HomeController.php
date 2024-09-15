@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use App\Models\Category;
+use App\Models\BlogComment;
+use App\Models\BlogReplayComment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -39,5 +42,25 @@ class HomeController extends Controller
         }else{
             abort(404);
         }
+    }
+    
+    public function storeComment(Request $request){
+        $saver = new BlogComment();
+        $saver->user_id = Auth::user()->id;
+        $saver->blog_id = $request->blog_id;
+        $saver->comment = $request->comment;
+        $saver->save();
+
+        return redirect()->back()->with('success','your comment successfully added.');
+    }
+
+    public function storeReplayComment(Request $request){
+        $saver = new BlogReplayComment();
+        $saver->user_id = Auth::user()->id;
+        $saver->comment_id = $request->comment_id;
+        $saver->comment = $request->comment;
+        $saver->save();
+
+        return redirect()->back()->with('success','your replay successfully sent');
     }
 }

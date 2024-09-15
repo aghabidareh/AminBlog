@@ -43,7 +43,7 @@
                       ><i class="fa fa-folder text-primary"></i> {{ $blog->categories_name }}</small
                     >
                     <small class="mr-3"
-                      ><i class="fa fa-comments text-primary"></i> 0</small
+                      ><i class="fa fa-comments text-primary"></i> {{ $blog->getCommentsCount() }}</small
                     >
                   </div>
                   <p>

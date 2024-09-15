@@ -35,4 +35,12 @@ class Blog extends Model
         return self::select('blogs.*' , 'users.name as user_name' , 'categories.name as categories_name')->join('users' , 'users.id' , '=' , 'blogs.user_id')->join('categories' , 'categories.id' , '=' , 'blogs.category_id')->where('blogs.id' , '!=' , $id)->where('blogs.category_id' , '=' , $category_id)->where('blogs.is_publish',1)->where('blogs.status',1)->orderby('blogs.id','desc')->limit(5)->get();
     }
 
+    public function getComment(){
+        return $this->hasMany(BlogComment::class , 'blog_id')->orderBy('blog_comments.id' , 'desc');
+    }
+
+    public function getCommentsCount(){
+        return $this->hasMany(BlogComment::class ,'blog_id')->count();
+    }
+
 }
