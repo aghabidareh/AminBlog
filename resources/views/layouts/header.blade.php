@@ -31,8 +31,12 @@
               <a href="{{ route('contact') }}" class="nav-item nav-link @if(Request::segment(1) == 'contact') active @endif">Contact</a>
               <a href="{{ route('blog') }}" class="nav-item nav-link @if(Request::segment(1) == 'blog') active @endif">Blog</a>
             </div>
+            @if (!Auth::check())
             <a href="{{ route('login') }}" class="btn btn-primary px-4 mr-2">Login</a>
             <a href="{{ route('register') }}" class="btn btn-primary px-4">Register</a>
+            @else
+            <a href="{{ route('logout') }}" class="btn btn-primary px-4 mr-2">Logout</a>
+            @endif
           </div>
         </nav>
       </div>
