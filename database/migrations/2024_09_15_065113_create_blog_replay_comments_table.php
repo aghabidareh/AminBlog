@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('blog_replay_comments', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id')->nullable()->refrences('id')->on('users')->onDelete('CASCADE');
-            $table->bigInteger('comment_id')->nullable()->refrences('id')->on('blog_comments')->onDelete('CASCADE');
+            $table->bigInteger('user_id')->nullable()->foreign('user_id')->refrences('id')->on('users')->onDelete('CASCADE');
+            $table->bigInteger('comment_id')->nullable()->foreign('comment_id')->refrences('id')->on('blog_comments')->onDelete('CASCADE');
             $table->string('comment');
             $table->timestamps();
         });
